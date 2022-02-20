@@ -13,17 +13,18 @@ CONNECTION_STRING = "HostName=Ingo-IoTHub.azure-devices.net;DeviceId=RasPi;Share
 MSG_TXT = '{{"Temperature": {Temperature},"Humidity": {Humidity},"CarbonDioxideValue":{CarbonDioxideValue}}}'
 
 # Define the csv file name to parse
-csvFilePath='sensorData.csv'
+csvFilePath='dataSet3.csv'
 
  
 def parse_csv(csvFilePath):
 #read csv file
- with open(csvFilePath, encoding='utf-8') as csvFile:
+ with open(csvFilePath, encoding='utf-8-sig') as csvFile:
     #load csv file data using csv library's dictionary reader
     csvReader=csv.DictReader(csvFile)
     data=[];
     for rows in csvReader:
-     data.append(rows)
+        data.append(rows)
+    print(data)
     return data
 
 def iothub_client_init():
