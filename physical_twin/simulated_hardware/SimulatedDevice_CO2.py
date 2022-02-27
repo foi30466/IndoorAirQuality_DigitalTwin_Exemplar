@@ -44,7 +44,7 @@ def iothub_client_telemetry_sample_run():
 
              Temperature = d['temperature']
              Humidity = d['humidity']
-             CarbonDioxideValue=d['co2']
+             CarbonDioxideValue = d['co2']
 
 
              msg_txt_formatted = MSG_TXT.format(Temperature=Temperature, Humidity=Humidity,CarbonDioxideValue=CarbonDioxideValue)
