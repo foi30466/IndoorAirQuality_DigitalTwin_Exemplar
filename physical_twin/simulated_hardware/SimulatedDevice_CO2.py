@@ -13,7 +13,7 @@ CONNECTION_STRING = "HostName=Ingo-IoTHub.azure-devices.net;DeviceId=RasPi;Share
 MSG_TXT = '{{"Temperature": {Temperature},"Humidity": {Humidity},"CarbonDioxideValue":{CarbonDioxideValue}}}'
 
 # Define the csv file name to parse
-csvFilePath='dataSet3.csv'
+csvFilePath = 'dataSet3.csv'
 
  
 def parse_csv(csvFilePath):
@@ -21,7 +21,7 @@ def parse_csv(csvFilePath):
  with open(csvFilePath, encoding='utf-8-sig') as csvFile:
     #load csv file data using csv library's dictionary reader
     csvReader=csv.DictReader(csvFile)
-    data=[];
+    data = []
     for rows in csvReader:
         data.append(rows)
     print(data)
@@ -36,8 +36,8 @@ def iothub_client_telemetry_sample_run():
 
     try:
         client = iothub_client_init()
-        print ( "IoT Hub device sending periodic messages, press Ctrl-C to exit" )
-        sensorData=parse_csv(csvFilePath)
+        print("IoT Hub device sending periodic messages, press Ctrl-C to exit")
+        sensorData = parse_csv(csvFilePath)
         while True:
             # Build the message with actual sensor data from room.
             for d in sensorData:
@@ -53,15 +53,15 @@ def iothub_client_telemetry_sample_run():
             
 
              # Send the message.
-             print( "Sending message: {}".format(message) )
+             print("Sending message: {}".format(message))
              client.send_message(message)
-             print ("Message successfully sent")
+             print("Message successfully sent")
              time.sleep(1)
 
     except KeyboardInterrupt:
-        print ( "IoTHubClient sample stopped" )
+        print("IoTHubClient sample stopped")
 
 if __name__ == '__main__':
-    print ( "IoT Hub Quickstart #1 - Simulated Sensor Data" )
-    print ( "Press Ctrl-C to exit" )
+    print("IoT Hub Quickstart #1 - Simulated Sensor Data")
+    print("Press Ctrl-C to exit")
     iothub_client_telemetry_sample_run()
